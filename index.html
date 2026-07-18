@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>名画100 - ヨーロッパ名画学習</title>
+<meta name="description" content="ヨーロッパの名画100点を学ぶPWA。ギャラリー、学習モード、クイズで美術史を身につける。">
+<meta name="theme-color" content="#12141a">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="名画100">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <h1 class="app-title">名画100</h1>
+  <nav class="tab-nav" id="tab-nav">
+    <button class="tab-btn is-active" data-view="gallery">ギャラリー</button>
+    <button class="tab-btn" data-view="timeline">学習</button>
+    <button class="tab-btn" data-view="quiz">クイズ</button>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ギャラリー画面 -->
+  <section id="view-gallery" class="view is-active">
+    <div class="gallery-controls">
+      <input type="search" id="search-input" class="search-input" placeholder="作品名・作者名で検索">
+      <div class="filter-row">
+        <select id="filter-movement" class="filter-select">
+          <option value="">すべての時代</option>
+        </select>
+        <select id="filter-genre" class="filter-select">
+          <option value="">すべてのジャンル</option>
+        </select>
+        <select id="sort-select" class="filter-select">
+          <option value="chronological">年代順</option>
+          <option value="title">作品名順</option>
+          <option value="artist">作者名順</option>
+        </select>
+      </div>
+    </div>
+    <p id="result-count" class="result-count"></p>
+    <div id="gallery-grid" class="gallery-grid"></div>
+  </section>
+
+  <!-- 詳細画面 -->
+  <section id="view-detail" class="view">
+    <div class="detail-topbar">
+      <button id="detail-back" class="icon-btn" aria-label="戻る">←</button>
+      <button id="detail-prev" class="icon-btn" aria-label="前の作品">‹</button>
+      <button id="detail-next" class="icon-btn" aria-label="次の作品">›</button>
+    </div>
+    <div class="detail-image-wrap" id="detail-image-wrap">
+      <img id="detail-image" class="detail-image" alt="">
+    </div>
+    <div class="detail-body">
+      <h2 id="detail-title" class="detail-title"></h2>
+      <p id="detail-title-original" class="detail-title-original"></p>
+      <p id="detail-meta" class="detail-meta"></p>
+      <div class="tab-strip" id="detail-tabs">
+        <button class="detail-tab-btn is-active" data-tab="background">成り立ち</button>
+        <button class="detail-tab-btn" data-tab="theme">テーマ</button>
+        <button class="detail-tab-btn" data-tab="artistNote">作者</button>
+        <button class="detail-tab-btn" data-tab="significance">意義</button>
+        <button class="detail-tab-btn" data-tab="highlights">見どころ</button>
+      </div>
+      <div id="detail-tab-content" class="detail-tab-content"></div>
+    </div>
+  </section>
+
+  <!-- 学習(タイムライン)画面 -->
+  <section id="view-timeline" class="view">
+    <div id="timeline-intro" class="timeline-intro">
+      <h2>学習モード</h2>
+      <p>初期ルネサンスから象徴主義まで、時代順に名画を辿ります。</p>
+      <button id="timeline-start" class="primary-btn">学習をはじめる</button>
+      <button id="timeline-resume" class="secondary-btn" hidden>続きから再開</button>
+    </div>
+    <div id="timeline-player" class="timeline-player" hidden>
+      <div class="timeline-progress">
+        <div id="timeline-progress-bar" class="timeline-progress-bar"></div>
+      </div>
+      <div id="timeline-card" class="timeline-card"></div>
+      <div class="timeline-nav">
+        <button id="timeline-prev" class="secondary-btn">‹ 前へ</button>
+        <span id="timeline-position" class="timeline-position"></span>
+        <button id="timeline-next" class="primary-btn">次へ ›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- クイズ画面 -->
+  <section id="view-quiz" class="view">
+    <div id="quiz-intro" class="quiz-intro">
+      <h2>クイズモード</h2>
+      <div id="quiz-stats" class="quiz-stats"></div>
+      <button id="quiz-start" class="primary-btn">クイズをはじめる</button>
+    </div>
+    <div id="quiz-player" class="quiz-player" hidden>
+      <div class="quiz-header">
+        <span id="quiz-progress-label" class="quiz-progress-label"></span>
+        <button id="quiz-quit" class="icon-btn" aria-label="終了">✕</button>
+      </div>
+      <div id="quiz-question" class="quiz-question"></div>
+      <div id="quiz-choices" class="quiz-choices"></div>
+      <div id="quiz-feedback" class="quiz-feedback" hidden></div>
+      <button id="quiz-next" class="primary-btn" hidden>次の問題へ</button>
+    </div>
+    <div id="quiz-result" class="quiz-result" hidden></div>
+  </section>
+
+</main>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
