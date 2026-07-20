@@ -1,7 +1,7 @@
 {
-  "name": "名画300 - ヨーロッパ名画学習",
-  "short_name": "名画300",
-  "description": "ヨーロッパの名画297点をギャラリー・学習モード・クイズで学ぶPWA",
+  "name": "名画320 - ヨーロッパ名画学習",
+  "short_name": "名画320",
+  "description": "ヨーロッパの名画321点をギャラリー・学習モード・クイズで学ぶPWA",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
